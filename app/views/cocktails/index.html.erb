@@ -1,10 +1,21 @@
 
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <% @cocktails.each do |cocktail| %>
-      <%= link_to cocktail.name, cocktail_path(cocktail) %><hr>
-    <% end %>
-    </div>
-  </div>
-  <%= link_to "CREATE A COCKTAIL", new_cocktail_path %>
+  <h1>Cocktails</h1>
 
+  <div class="container">
+    <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <div class="col-4">
+      <div class="card" style="width: 200px;">
+        <% if cocktail.photo.attached? %>
+          <%= cl_image_tag cocktail.photo.key, crop: :fill, class: "card-picture"%>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/dhhkwopvg/image/upload/v1589551134/cocktail_bloody_mary_ijfvhw.jpg", alt: "alttext" %>
+        <% end %>
+        <%= link_to cocktail.name, cocktail_path(cocktail) %><hr>
+      </div>
+      </div>
+    <% end %>
+</div>
+<br><br>
+<%= link_to "CREATE A COCKTAIL", new_cocktail_path %>
+</div>

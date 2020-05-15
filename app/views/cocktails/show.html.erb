@@ -1,6 +1,12 @@
 <div class="container">
 <h2><%= @cocktail.name %></h2>
 <hr>
+<% if @cocktail.photo.attached? %>
+  <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <%= image_tag "https://res.cloudinary.com/dhhkwopvg/image/upload/v1589551134/cocktail_bloody_mary_ijfvhw.jpg", alt: "alttext" %>
+<% end %>
+<hr>
 
 <h5>Recipe</h5>
 <ul>
